@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  baiduzhidao:
+    build:
+      context: .
+    ports:
+      - 9090:9090
+    depends_on:
+      - db
+    environment:
+      MYSQL_DB_HOST: db
+      MYSQL_DB_NAME: baidu
+      MYSQL_DB_USER: root
+      MYSQL_DB_PASS: frfzklgj1999
+  tomcat:
+    image: tomcat:8.0
+    volumes:
+      - ./webapps:/usr/local/tomcat/webapps
+    ports:
+      - 8080:8080
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: baidu
+      MYSQL_ROOT_PASSWORD: frfzklgj1999
