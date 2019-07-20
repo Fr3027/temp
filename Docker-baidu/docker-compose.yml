@@ -18,7 +18,7 @@ services:
     volumes:
       - ./webapps:/usr/local/tomcat/webapps
     ports:
-      - 8080:8080
+      - 8888:8080
   db:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
